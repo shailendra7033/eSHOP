@@ -1,0 +1,32 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Buy Now{% endblock title %}
+{% block main-content %}
+<div class="container my-5">
+ <div class="row">
+ <h3>Welcome {{request.user}}</h3>
+  <div class="col-sm-2 border-end">
+   <ul class="list-unstyled">
+    <li class="d-grid"><a href="{% url 'orders' %}" class="btn btn-primary">Orders</a></li>
+   </ul>
+  </div>
+  <div class="col-sm-9 offset-sm-1">
+   <div class="row">
+    {% for ordered_item in order_placed %}
+    
+    <div class="col-sm-6 text-center align-self-center">
+        <p><h5>Order {{forloop.counter}}</h5></p>
+        <img src="{{ordered_item.product.product_image.url}}" alt="" class="img-fluid img-thumbnail">
+  
+  <p><b>{{ordered_item.product.name}}    </p><p>Rs {{ordered_item.product.discount_price}}</b></p>
+  <hr><hr>
+    <!-- <div class="col-sm-6">Order {{forloop.counter}}</div> -->
+    -  </div>
+    <!-- <div class="col-sm-6">Order 2</div> -->
+    {% endfor %}
+   </div>
+  </div>
+
+ </div>
+</div>
+{% endblock main-content %}

@@ -1,0 +1,36 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Customer Registration{% endblock title %}
+{% block main-content %}
+<div class="container">
+ <div class="row my-3">
+  <div class="col-sm-6 offset-sm-3">
+   <h3>Customer Registration</h3>
+   <hr>
+   <form action="" method="post">
+        
+      {% csrf_token %}
+      {% for fm in form %}
+      <div class="mx-2 my-1">
+      {{fm.label_tag}}
+      </div>
+  <div class="mx-2">
+     {{fm}}  
+  </div>
+         
+         <div>
+     {{fm.errors|striptags}}  
+  </div>
+  
+    
+      {% endfor %}
+  
+      <button type="submit" class="btn btn-outline-primary my-3 mx-2" style="margin: auto;">submit</button>
+      <p class="my-2 mx-2">Already have an account? <a href="{% url 'login' %}">Login </a></p>
+     
+  </form>
+
+  </div>
+ </div>
+</div>
+{% endblock main-content %}
